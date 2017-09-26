@@ -1,0 +1,21 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class ButtonController : MonoBehaviour {
+
+	public Button myButton;
+
+	// Use this for initialization
+	void Start () {
+		Button btn = myButton.GetComponent<Button> ();
+		btn.onClick.AddListener (TaskOnClick);
+	}
+	
+	void TaskOnClick(){
+		//myButton.SetActive (false);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+}
