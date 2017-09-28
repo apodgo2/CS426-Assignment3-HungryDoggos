@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CharacterController : MonoBehaviour {
 
-	public float speed = 25.0f;
+	public float speed = 2500.0f;
 	public float rotationSpeed = 90;
 	public float force = 700f;
 
@@ -25,13 +25,15 @@ public class CharacterController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 
 		if (Input.GetKey (KeyCode.W))
-			rb.velocity += this.transform.right * speed * Time.deltaTime;
+			//rb.velocity += this.transform.right * speed * Time.deltaTime;
+            transform.Translate (Vector3.right * speed * Time.deltaTime);
 		else if (Input.GetKey(KeyCode.S))
-			rb.velocity -= this.transform.right * speed * Time.deltaTime;
+			//rb.velocity -= this.transform.right * speed * Time.deltaTime;
+            transform.Translate (Vector3.left * speed * Time.deltaTime); //should probably use AddForce instead of this, but it's late.
 
 		if (Input.GetKey (KeyCode.D))
 			t.rotation *= Quaternion.Euler(0, rotationSpeed * Time.deltaTime, 0);
@@ -52,7 +54,7 @@ public class CharacterController : MonoBehaviour {
 			
 
 		if (Input.GetKeyDown (KeyCode.Space))
-			rb.AddForce (t.up * force);
+			rb.AddForce (t.up * force);// so this doesn't work probably because the dog is made of a bunch of components. maybe make the dog a prefab then apply force?
 
 		if (Input.GetKey (KeyCode.R)) {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

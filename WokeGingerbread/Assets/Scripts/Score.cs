@@ -24,12 +24,15 @@ public class Score : MonoBehaviour {
 	{
 		score++;
 
-		if (score < maxScore){
+        scoreText.text = "Score: " + score;
+
+        //disabling this because we don't want the game to end on maxScore, we want the game to end after the timer runs out.
+		/*if (score < maxScore){
 			scoreText.text = "Score: " + score;
 		}else { 
 			scoreText.text = "Score: " + score;
 			winText.text = "You won! \n Press 'R' to Restart!";
-		}
+		}*/
 	}
 
 	public void setScore(int num)
