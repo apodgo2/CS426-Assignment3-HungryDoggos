@@ -6,6 +6,8 @@ public class Target : MonoBehaviour {
 
 	public Score scoreManager;
 	public int pointValue;
+    public AudioClip targetHit;
+    public AudioSource audioSource;
 
 	private void OnCollisionEnter(Collision collision)
 	{
@@ -18,6 +20,7 @@ public class Target : MonoBehaviour {
                 scoreManager.AddPoint ();
             }
 
+            audioSource.PlayOneShot (targetHit);
             Debug.Log ("Dog Collision detected");
             Destroy (gameObject);
         }
