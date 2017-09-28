@@ -5,6 +5,7 @@ using UnityEngine;
 public class Doggo : MonoBehaviour {
 
     float lastBark = 0;
+    public int penaltySecs = 10;
 
     public void bark() { // a dog can bark once a second
         if (Time.time >= lastBark+1) {
@@ -20,7 +21,7 @@ public class Doggo : MonoBehaviour {
                 if (!DetectBehaviour.getClosest ().GetComponent<Gingerperson> ().giveFood ()) {
                     //we didn't get food *sadtrombone.wav*
                     //so now we subtract some points from our poor doggo's score.
-
+                    Timer.subtractTime (penaltySecs);//configurable penalty...
                 }
             }
             //check detectbehaviour for distance
