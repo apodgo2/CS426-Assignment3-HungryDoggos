@@ -12,6 +12,7 @@ public class CharacterController : MonoBehaviour {
 	public GameObject cannon;
 	public GameObject bullet;
 	public Score scoreManager;
+    public Doggo doggoscript;
 
 	//declaring pointers to Rigidbody & Transform objects
 	Rigidbody rb; 
@@ -38,11 +39,16 @@ public class CharacterController : MonoBehaviour {
 			t.rotation *= Quaternion.Euler(0, - rotationSpeed * Time.deltaTime, 0);
 
 
-		if (Input.GetKey (KeyCode.B)) {
+		/*if (Input.GetKey (KeyCode.B)) { // old gingerbread bullet code:
 			GameObject newBullet = GameObject.Instantiate (bullet, cannon.transform.position, cannon.transform.rotation) as GameObject;
 			newBullet.GetComponent<Rigidbody> ().velocity += Vector3.up * 10;
 			newBullet.GetComponent<Rigidbody> ().AddForce (newBullet.transform.forward * 1500);
-		}
+		}*/
+
+        if (Input.GetKey (KeyCode.B)) {
+            //BARK!
+            doggoscript.bark ();
+        }
 			
 
 		if (Input.GetKeyDown (KeyCode.Space))
