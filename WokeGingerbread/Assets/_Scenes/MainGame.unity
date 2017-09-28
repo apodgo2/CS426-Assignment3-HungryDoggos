@@ -1438,7 +1438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1418601257}
-  timeGiven: 100
+  timeGiven: 10
 --- !u!4 &564110888
 Transform:
   m_ObjectHideFlags: 0
@@ -1465,6 +1465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 382207745}
   winText: {fileID: 18112618}
+  winThreshold: 3
 --- !u!1 &677223380
 GameObject:
   m_ObjectHideFlags: 0

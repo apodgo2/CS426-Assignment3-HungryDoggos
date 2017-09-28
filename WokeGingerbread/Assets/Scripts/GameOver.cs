@@ -8,12 +8,16 @@ public class GameOver : MonoBehaviour {
 
 	public Score scoreManager;
 	public Text winText;
+    public int winThreshold = 3;
 
     public void endGame() {
-		if (scoreManager.getScore() < 10) {
-			winText.text = "You Lose! \n Press 'R' to Restart!";
+        if (scoreManager.getScore () < winThreshold) {
+            winText.text = "You Lose! \n Press 'R' to Restart!";
 
-		}
+        } else {
+            //you win!
+            SceneManager.LoadScene ("WinScene");
+        }
 	}
 
 }
