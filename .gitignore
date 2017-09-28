@@ -4,6 +4,12 @@
 /[Bb]uild/
 /[Bb]uilds/
 /Assets/AssetStoreTools*
+/WokeGingerbread/[Ll]ibrary/
+/WokeGingerbread/[Tt]emp/
+/WokeGingerbread/[Oo]bj/
+/WokeGingerbread/[Bb]uild/
+/WokeGingerbread/[Bb]uilds/
+/WokeGingerbread/Assets/AssetStoreTools*
 
 # Visual Studio 2015 cache directory
 /.vs/
