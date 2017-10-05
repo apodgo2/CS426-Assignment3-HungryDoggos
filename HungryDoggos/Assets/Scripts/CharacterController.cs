@@ -14,6 +14,8 @@ public class CharacterController : MonoBehaviour {
 	public Score scoreManager;
     public Doggo doggoscript;
 
+	public CAVE2.Axis forwardAxis = CAVE2.Axis.LeftAnalogStickUD;
+
 	//declaring pointers to Rigidbody & Transform objects
 	Rigidbody rb; 
 	Transform t;
@@ -28,16 +30,16 @@ public class CharacterController : MonoBehaviour {
 	void FixedUpdate () {
 
 
-		if (Input.GetKey (KeyCode.W))
+		if (Input.GetKey (KeyCode.W) || CAVE2.GetButtonDown(1, CAVE2.Button.ButtonUp))
 			//rb.velocity += this.transform.right * speed * Time.deltaTime;
             transform.Translate (Vector3.right * speed * Time.deltaTime);
-		else if (Input.GetKey(KeyCode.S))
+		else if (Input.GetKey(KeyCode.S) || CAVE2.GetButtonDown(1, CAVE2.Button.ButtonDown))
 			//rb.velocity -= this.transform.right * speed * Time.deltaTime;
             transform.Translate (Vector3.left * speed * Time.deltaTime); //should probably use AddForce instead of this, but it's late.
 
-		if (Input.GetKey (KeyCode.D))
+		if (Input.GetKey (KeyCode.D)|| CAVE2.GetButtonDown(1, CAVE2.Button.ButtonRight))
 			t.rotation *= Quaternion.Euler(0, rotationSpeed * Time.deltaTime, 0);
-		else if (Input.GetKey(KeyCode.A))
+		else if (Input.GetKey(KeyCode.A)|| CAVE2.GetButtonDown(1, CAVE2.Button.ButtonLeft))
 			t.rotation *= Quaternion.Euler(0, - rotationSpeed * Time.deltaTime, 0);
 
 
@@ -47,7 +49,7 @@ public class CharacterController : MonoBehaviour {
 			newBullet.GetComponent<Rigidbody> ().AddForce (newBullet.transform.forward * 1500);
 		}*/
 
-        if (Input.GetKey (KeyCode.B)) {
+		if (Input.GetKey (KeyCode.B) || CAVE2.GetButtonDown(1, CAVE2.Button.Button7)) {
             //BARK!
             doggoscript.bark ();
         }
@@ -56,8 +58,9 @@ public class CharacterController : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Space))
 			rb.AddForce (t.up * force);// so this doesn't work probably because the dog is made of a bunch of components. maybe make the dog a prefab then apply force?
 
-		if (Input.GetKey (KeyCode.R)) {
+		if (Input.GetKey (KeyCode.R)|| CAVE2.GetButtonDown(1, CAVE2.Button.Button1)) {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
+
 	}
 }
